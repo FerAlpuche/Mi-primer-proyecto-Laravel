@@ -13,6 +13,8 @@ class MessagesController extends Controller
             'email' => 'required|email',
             'subject' => 'required',
             'content' => 'required',
+        ], [
+            'name.required' => 'Necesito tu nombre completo'
         ]);
 
         return "Datos validados";
