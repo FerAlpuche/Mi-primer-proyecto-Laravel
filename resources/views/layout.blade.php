@@ -3,17 +3,16 @@
 
 <head>
     <title>@yield('title', 'Page')</title>
+    <style>
+        .active a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/portafolio">Portafolio</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-    </nav>
+    @include('partials.nav')
     @yield('content')
 </body>
 
