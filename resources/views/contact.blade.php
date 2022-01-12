@@ -3,7 +3,7 @@
 @section('title', 'Contact')
 
 @section('content')
-    <h1>@lang('Contact')</h1>
+    <h1>{{ __('Contact') }}</h1>
     <form method="POST" action="{{ route('contact') }}">
         <!-- 
             la direciva "csrf" crea un campo oculto donde estar ael token del usuario

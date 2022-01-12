@@ -11,7 +11,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() //AGREGAR TABLAS, COLUMNAS O INDCIES
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down()// INVIERTE TODAS LAS ACCIONES QUE HIZO EL METODO UP
     {
         Schema::dropIfExists('users');
     }
