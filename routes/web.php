@@ -53,8 +53,12 @@ la URL correcta.
 
 
 Route::view('/', 'home')->name('home');
+
 Route::view('/about', 'about')->name('about');
-Route::get('/portafolio', 'PortafolioController@index')->name('portafolio');
+
+Route::get('/portafolio', 'ProjectController@index')->name('projects.index'); 
+Route::get('/portafolio/{id}', 'ProjectController@show')->name('projects.show');
+
 Route::view('/contact', 'contact')->name('contact');
 
 Route::post('contact', 'MessagesController@store');
