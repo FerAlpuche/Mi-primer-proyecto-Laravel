@@ -5,6 +5,8 @@
 @section('content')
 <h1>Proyectos</h1>
 
+<a href="{{ route('projects.create') }}">Crear proyecto</a>
+
 <ul>
     <!-- ferelse utilizando blade-->
     @forelse ($projects as $project)

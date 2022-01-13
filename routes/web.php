@@ -56,8 +56,21 @@ Route::view('/', 'home')->name('home');
 
 Route::view('/about', 'about')->name('about');
 
+//Es muy importante el orden de las rutas
 Route::get('/portafolio', 'ProjectController@index')->name('projects.index'); 
+//CREATE
+Route::get('/portafolio/crear', 'ProjectController@create')->name('projects.create');
+//EDIT
+Route::get('/portafolio/{project}/editar', 'ProjectController@edit')->name('projects.edit');
+//UPDATE
+Route::patch('/portafolio/{project}', 'ProjectController@update')->name('projects.update');
+//REGISTER
+Route::post('/portafolio', 'ProjectController@store')->name('projects.store'); 
+//SHOW
 Route::get('/portafolio/{id}', 'ProjectController@show')->name('projects.show');
+//DESTROY
+Route::delete('/portafolio/{project}', 'ProjectController@destroy')->name('projects.destroy');
+
 
 Route::view('/contact', 'contact')->name('contact');
 
