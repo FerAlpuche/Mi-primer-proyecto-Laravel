@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,13 @@ class Project extends Model
     public function getRouteKeyName()
     {
         return 'url';
+    }
+
+    //Define la relacion entre project y category
+    public function category()
+    {
+        //Retornamos la relacion entre las dos tablas
+        return $this->belongsTo(Category::class);
     }
 
 }

@@ -51,7 +51,7 @@ Route::get('/', function(){
 Recibe como parametro el nombre de la ruta y este nos devuelve 
 la URL correcta.
 */
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::view('/', 'home')->name('home');
 
