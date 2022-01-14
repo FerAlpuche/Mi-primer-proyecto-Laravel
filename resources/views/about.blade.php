@@ -6,10 +6,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 mb-4">
-            <div class="col-12">
-                <img class="img-fluid mb-4" src="/img/about.svg" alt="Desarrollo web">
-            </div>
+        <div class="col">
+            <img class="img-fluid mb-4" src="/img/about.svg" alt="Desarrollo web">
+        </div>
+        <div class="col-2 col-sm-10 col-lg-6 mx-auto">
             <h1 class="dispaly-4 mb-4">Quién soy</h1>
             <p class="lead text-secondary">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.

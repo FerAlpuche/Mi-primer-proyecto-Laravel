@@ -6,7 +6,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 mb-4">
+        <div class="col" >
+            <img class="img-fluid mb-4" src="/img/home.svg" alt="Desarrollo web">
+        </div>
+        <div class="col-2 col-sm-10 col-lg-6 mx-auto">
             <h1 class="display-4 mb-4">Desarrollo web</h1>
             <p class="lead text-secondary">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -20,9 +23,6 @@
             <a class="btn btn-lg btn-block btn-outline-info" href="{{ route('projects.index') }}">
                 Portafolio
             </a>
-        </div>
-        <div class="col-12" >
-            <img class="img-fluid mb-4" src="/img/home.svg" alt="Desarrollo web">
         </div>
     </div>
 </div>

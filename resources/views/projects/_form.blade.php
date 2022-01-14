@@ -6,9 +6,11 @@
 
     @endif
 
-    <div class="custom-file mb-2">
-        <input name="image" type="file" class="custom-file-input" id="inputGroupFile01">
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    <div class="input-group mb-3">
+        <div class="custom-file">
+            <input name="image" type="file" class="custom-file-input" id="inputGroupFile01">
+            <label class="custom-file-label" for="inputGroupFile01">Elige una imagen</label>
+        </div>
     </div>
 
     <div class="mb-3">
