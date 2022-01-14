@@ -5,9 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Http\Requests\SaveProjectRequest;
+use Illuminate\Support\Facades\Storage;
+//use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        // Para hacer el filtro existe "only" y "except"
+        // $this->middleware('auth')->only('create', 'edit', 'destroy');
+        $this->middleware('auth')->except('index', 'show',);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,10 +29,10 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show(Project $id)
+    public function show(Project $project)
     {
         return view('projects.show', [
-            'project' => $id
+            'project' => $project
         ]);
     }
 
@@ -36,9 +45,14 @@ class ProjectController extends Controller
 
     public function store(SaveProjectRequest $request)
     {
-        Project::create($request->validated());
+        //Aqui se guarda el proyecto
+        $project = new Project($request->validated() );
+        //Asignamos la imagen
+        $project->image = $request->file('image')->store('images');
+        // se guarda en la basde de datos
+        $project->save();
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue creado con éxito');
 
         // Esto es sin usar el RequestProject
         /* Proteccion contra la asignacion masiva
@@ -69,15 +83,34 @@ class ProjectController extends Controller
 
     public function update(Project $project, SaveProjectRequest $request)
     {
-        $project->update($request->validated());
+        
+        if( $request->hasFile('image')){
 
-        return redirect()->route('projects.show', $project);
+            Storage::delete($project->image);
+
+            $project->fill($request->validated() );
+
+            $project->image = $request->file('image')->store('images');
+
+            $project->save();
+
+            //optimizar la imagen que se guarda
+           // Image::make('public/foo.jpg');
+
+        }else {
+            $project->update( array_filter($request->validated()) );
+        }
+
+        return redirect()->route('projects.show', $project)->with('status', 'El proyecto fue editado con éxito');
 
     }
 
     public function destroy(Project $project)
     {
+        Storage::delete($project->image);
+
         $project->delete();
-        return redirect()->route('projects.index');
+        
+        return redirect()->route('projects.index')->with('status', 'El proyecto fue eliminado con éxito');
     }
 }

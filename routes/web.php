@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,13 +51,29 @@ Route::get('/', function(){
 Recibe como parametro el nombre de la ruta y este nos devuelve 
 la URL correcta.
 */
-
+Auth::routes(['register' => false]);
 
 Route::view('/', 'home')->name('home');
 
 Route::view('/about', 'about')->name('about');
+Route::resource('portafolio', 'ProjectController')
+                ->parameters(['portafolio' => 'project'])
+                ->names('projects');
 
 //Es muy importante el orden de las rutas
+/*Route::get('/portafolio', 'ProjectController@index')->name('projects.index'); 
+//CREATE
+Route::get('/portafolio/crear', 'ProjectController@create')->name('projects.create');
+//EDIT
+Route::get('/portafolio/{project}/editar', 'ProjectController@edit')->name('projects.edit');
+//UPDATE
+Route::patch('/portafolio/{project}', 'ProjectController@update')->name('projects.update');
+//REGISTER
+Route::post('/portafolio', 'ProjectController@store')->name('projects.store'); 
+//SHOW
+Route::get('/portafolio/{project}', 'ProjectController@show')->name('projects.show');
+//DESTROY
+Route::delete('/portafolio/{project}', 'ProjectController@destroy')->name('projects.destroy');//Es muy importante el orden de las rutas
 Route::get('/portafolio', 'ProjectController@index')->name('projects.index'); 
 //CREATE
 Route::get('/portafolio/crear', 'ProjectController@create')->name('projects.create');
@@ -67,11 +84,11 @@ Route::patch('/portafolio/{project}', 'ProjectController@update')->name('project
 //REGISTER
 Route::post('/portafolio', 'ProjectController@store')->name('projects.store'); 
 //SHOW
-Route::get('/portafolio/{id}', 'ProjectController@show')->name('projects.show');
+Route::get('/portafolio/{project}', 'ProjectController@show')->name('projects.show');
 //DESTROY
-Route::delete('/portafolio/{project}', 'ProjectController@destroy')->name('projects.destroy');
-
+Route::delete('/portafolio/{project}', 'ProjectController@destroy')->name('projects.destroy');*/
 
 Route::view('/contact', 'contact')->name('contact');
 
 Route::post('contact', 'MessagesController@store');
+

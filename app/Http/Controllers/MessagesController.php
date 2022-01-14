@@ -22,7 +22,7 @@ class MessagesController extends Controller
         // Enviar emails
         Mail::to('fernanda.z@ittec.mx')->queue(new MessageReceived($message));
 
-
-        return 'mensaje enviado';
+        // Nos redirecciona a la pagina contact
+        return back()->with('status', 'Recibimos tu mensaje, te responderemos en menos de 24 horas :)');
     }
 }
